@@ -21,7 +21,7 @@
 
                 <div class="media-content">
                   <div class="title">
-                    <%= lunch.title %></div>
+                    <div class="star-rating-front" style="width%"><%= "評価:" %>★<%= lunch.score %><%= "点" %></div>
                 </div>
  
                 <% if current_user.already_favorited?(lunch) %>
