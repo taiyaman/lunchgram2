@@ -1,0 +1,92 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-7">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <%= attachment_image_tag @lunch, :image %>
+            </figure>
+          </div>
+          <div class="card-content">
+           <% if current_user.already_favorited?(@lunch) %>
+              <%= link_to lunch_favorites_path(@lunch), method: :delete do %>
+                <i class="fas fa-heart"></i>
+             <% end %>
+              <%= @lunch.favorites.count %></br>
+           <% else %>
+              <%= link_to lunch_favorites_path(@lunch), method: :post do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+              <%= @lunch.favorites.count %></br>
+            <% end %>
+            <div class="content">
+              <table class="table is-narrow">
+                <tr>
+                  <th>料理名</th>
+                </tr>
+                <tr>
+                  <td><%= simple_format @lunch.title %></td>
+                </tr>
+                <tr>
+                  <th>店名</th>
+                </tr>
+                <tr>
+                  <td><%= simple_format @lunch.name %></td>
+                </tr>
+                <tr>
+                  <th>レビュー</th>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="card-content">
+                      <div class="content average-score">
+                        <div class="star-rating">
+                          <div class="star-rating-front" style="width%"><%= "評価:" %>★<%= @lunch.score %><%= "点" %></div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><%= simple_format @lunch.body %></td>
+                </tr>
+              </table>
+              <p>
+                <strong>住所:</strong> <br>
+              <% if @lunch.address? %>
+                <%= @lunch.address %>
+              </p>
+                <%= content_tag(:iframe, 'map', src:'https://www.google.com/maps/embed/v1/place?key=AIzaSyAu5LDV1ad_N382ncCVItm8UBv4mCuOCWo&q=' + @lunch.address, width: 800, height: 400, frameborder: 0) %>
+                <br>
+              <% end %>
+   
+              <% if @lunch.user.id == current_user.id %>
+                <%= link_to "編集画面へ", edit_lunch_path(@lunch), class: "button is-success" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <article class="panel is-link">
+          <p class="panel-heading">
+            By <%= @lunch.user.username %>
+          </p>
+          <div class="panel-block">
+            <p class="control">
+              <%= @lunch.user.profile %>
+            </p>
+          </div>
+          <%= link_to user_path(@lunch.user), class: "panel-block" do %>
+            <span class="panel-icon">
+              <i class="fas fa-user" aria-hidden="true"></i>
+            </span>
+            <%= @lunch.user.username %> さんのページへ
+          <% end %>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>

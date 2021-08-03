@@ -1,0 +1,61 @@
+<% if @lunch.errors.any? %>
+  <div class="notification is-danger">
+    <h2><%= pluralize(@lunch.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
+    <ul>
+      <% @lunch.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <%= form_for @lunch do |f| %>
+           <div class="field">
+            <%= f.label :name, "店名", class: "label" %>
+            <%= f.text_field :name, class: "input" %>
+          </div>
+          
+          <div class="field">
+            <%= f.label :title, "料理名", class: "label" %>
+            <%= f.text_field :title, class: "input" %>
+          </div>
+          
+          <%= f.label :score, "レビューを書く", class: "label" %>
+          <div class="rating-box mt-3">
+            <div class="main-rating">
+              <div class="ratings mb-3">
+                <span class="fa fa-star-o" id="star"></span>
+                <span class="fa fa-star-o" id="star"></span>
+                <span class="fa fa-star-o" id="star"></span>
+                <span class="fa fa-star-o" id="star"></span>
+                <span class="fa fa-star-o" id="star"></span>
+                <%= f.hidden_field :score, id: "rating-value" %>
+              </div>
+            </div>
+          </div>
+          
+          <div class="field">
+            <%= f.text_area :body, class: "textarea" %>
+          </div>
+          
+          <div class="field">
+            <%= f.label :address, "住所", class: "label" %>
+            <%= f.text_area :address, class: "input" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :image, "写真", class: "label" %>
+            <%= f.attachment_field :image, class: "input" %>
+          </div>
+
+          <%= f.submit '投稿', class: "button is-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<%= javascript_include_tag 'lunches.js' %>
