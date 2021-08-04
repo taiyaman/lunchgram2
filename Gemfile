@@ -12,7 +12,7 @@ gem 'jbuilder',     '2.6.4'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
-gem "refile-s3"
+
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'
@@ -37,3 +37,4 @@ gem 'devise'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "bulma-rails"
+gem "refile-s3"
