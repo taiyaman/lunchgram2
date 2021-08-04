@@ -12,6 +12,7 @@ gem 'jbuilder',     '2.6.4'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+gem "refile-s3"
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'
