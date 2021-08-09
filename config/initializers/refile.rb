@@ -2,8 +2,8 @@
 require "refile/s3"
 
 aws = {
-  access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-  secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+  access_key_id: "AKIAVK3OEJ7LA56QRJEM",
+  secret_access_key: "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",
   region: "ap-northeast-1",
   bucket: "rails-photo-12345678",
 }
