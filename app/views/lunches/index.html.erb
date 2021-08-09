@@ -13,15 +13,18 @@
             </div>
             <div class="card-content">
               <div class="media">
-                <div class="media-left">
-                  <figure class="image is-48x48">
-                    <%= attachment_image_tag lunch.user, :profile_image, fallback: "no-image.png", class: "profile_image" %>
-                  </figure>
-                </div>
+                <!div class="media-left">
+                  <!figure class="image is-48x48">
+                    <!%= attachment_image_tag lunch.user, :profile_image, fallback: "no-image.png", class: "profile_image" %>
+                  <!/figure>
+                <!/div>
 
                 <div class="media-content">
                   <div class="title">
-                    <%= lunch.name %></div>
+                    <%= link_to lunch_path(lunch) do %>
+                      <%= lunch.name %>
+                    <% end %>
+                  </div>
                 </div>
  
                 <% if current_user.already_favorited?(lunch) %>
