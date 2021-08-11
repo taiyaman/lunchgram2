@@ -5,11 +5,11 @@
         <div class="column is-4">
           <div class="card">
             <div class="card-image">
-              <figure class="image is-4by3">
-                <%= link_to lunch_path(lunch) do %>
-                  <%= attachment_image_tag lunch, :image %>
-                <% end %>
-              </figure>
+              <!figure class="image is-4by3">
+                <!%= link_to lunch_path(lunch) do %>
+                  <!%= attachment_image_tag lunch, :image %>
+                <!% end %>
+              <!/figure>
             </div>
             <div class="card-content">
               <div class="media">
@@ -21,29 +21,34 @@
 
                 <div class="media-content">
                   <div class="title">
+                    <%= "店名:" %>
                     <%= link_to lunch_path(lunch) do %>
-                      <%= lunch.name %>
+                      <%= lunch.name %></br>
+                    <% end %>
+                    <%= "料理名:" %>
+                    <%= link_to lunch_path(lunch) do %>
+                      <%= lunch.title %>
                     <% end %>
                   </div>
                 </div>
- 
-                <% if current_user.already_favorited?(lunch) %>
-                  <%= link_to lunch_favorites_path(lunch), method: :delete do %>
-                    <i class="fas fa-heart"></i>
-                  <% end %>
-                  <%= lunch.favorites.count %>
-                <% else %>
-                  <%= link_to lunch_favorites_path(lunch), method: :post do %>
-                    <i class="far fa-heart"></i>
-                  <% end %>
-                  <%= lunch.favorites.count %>
-                <% end %>
               </div>
               <div class="card-content">
                   <div class="star-rating">
                     <div class="star-rating-front" style="width%"><%= "評価:" %>★<%= lunch.score %><%= "点" %></div>
                   </div>
               </div>
+              
+              <% if current_user.already_favorited?(lunch) %>
+                <%= link_to lunch_favorites_path(lunch), method: :delete do %>
+                <i class="fas fa-heart"></i>
+              <% end %>
+                <%= lunch.favorites.count %>
+              <% else %>
+                <%= link_to lunch_favorites_path(lunch), method: :post do %>
+                <i class="far fa-heart"></i>
+              <% end %>
+                <%= lunch.favorites.count %>
+              <% end %>
 
               <div class="content">
                 <time><%= lunch.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新

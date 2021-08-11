@@ -4,19 +4,24 @@
       <% @users.each do |user| %>
         <div class="column is-3">
           <div class="card">
-            <div class="card-content">
-              <div class="card-image">
-                <figure class="image">
-                  <%= link_to user_path(user) do %>
-                    <%= attachment_image_tag user, :profile_image, fallback: "no-image.png" %>
-                  <% end %>
-                </figure>
-              </div>
-            </div>
+            <!div class="card-content">
+              <!div class="card-image">
+                <!figure class="image">
+                  <!%= link_to user_path(user) do %>
+                    <!%= attachment_image_tag user, :profile_image, fallback: "no-image.png" %>
+                  <!% end %>
+                <!/figure>
+              <!/div>
+            <!/div>
             <div class="card-content">
               <div class="media">
                 <div class="media-content">
                   <div class="title"><%=link_to user.username, user_path(user) %></div>
+                </div>
+              </div>
+              <div class="media">
+                <div class="media-content">
+                  <%= user.profile %>
                 </div>
               </div>
               <div class="content">

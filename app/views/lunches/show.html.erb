@@ -3,36 +3,25 @@
     <div class="columns is-centered">
       <div class="column is-7">
         <div class="card">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <%= attachment_image_tag @lunch, :image %>
-            </figure>
-          </div>
+          <!div class="card-image">
+            <!figure class="image is-4by3">
+              <!%= attachment_image_tag @lunch, :image %>
+            <!/figure>
+          <!/div>
           <div class="card-content">
-           <% if current_user.already_favorited?(@lunch) %>
-              <%= link_to lunch_favorites_path(@lunch), method: :delete do %>
-                <i class="fas fa-heart"></i>
-             <% end %>
-              <%= @lunch.favorites.count %></br>
-           <% else %>
-              <%= link_to lunch_favorites_path(@lunch), method: :post do %>
-              <i class="far fa-heart"></i>
-            <% end %>
-              <%= @lunch.favorites.count %></br>
-            <% end %>
             <div class="content">
               <table class="table is-narrow">
-                <tr>
-                  <th>料理名</th>
-                </tr>
-                <tr>
-                  <td><%= simple_format @lunch.title %></td>
-                </tr>
                 <tr>
                   <th>店名</th>
                 </tr>
                 <tr>
                   <td><%= simple_format @lunch.name %></td>
+                </tr>
+                <tr>
+                  <th>料理名</th>
+                </tr>
+                <tr>
+                  <td><%= simple_format @lunch.title %></td>
                 </tr>
                 <tr>
                   <th>レビュー</th>
@@ -53,14 +42,24 @@
                 </tr>
               </table>
               <p>
-                <strong>住所:</strong> <br>
+                <strong>住所:</strong>
               <% if @lunch.address? %>
                 <%= @lunch.address %>
               </p>
                 <%= content_tag(:iframe, 'map', src:'https://www.google.com/maps/embed/v1/place?key=AIzaSyAu5LDV1ad_N382ncCVItm8UBv4mCuOCWo&q=' + @lunch.address, width: 800, height: 400, frameborder: 0) %>
                 <br>
               <% end %>
-   
+                <% if current_user.already_favorited?(@lunch) %>
+                  <%= link_to lunch_favorites_path(@lunch), method: :delete do %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+                  <%= @lunch.favorites.count %></br>
+                <% else %>
+                  <%= link_to lunch_favorites_path(@lunch), method: :post do %>
+                  <i class="far fa-heart"></i>
+                <% end %>
+                  <%= @lunch.favorites.count %></br>
+                <% end %>
               <% if @lunch.user.id == current_user.id %>
                 <%= link_to "編集画面へ", edit_lunch_path(@lunch), class: "button is-success" %>
               <% end %>
