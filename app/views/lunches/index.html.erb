@@ -20,11 +20,13 @@
                 <!/div>
 
                 <div class="media-content">
-                  <div class="title">
+                  <div class="title is-size-4 mt-2">
                     <%= "店名:" %>
                     <%= link_to lunch_path(lunch) do %>
                       <%= lunch.name %></br>
                     <% end %>
+                  </div>  
+                  <div class="title is-size-4 mt-2">
                     <%= "料理名:" %>
                     <%= link_to lunch_path(lunch) do %>
                       <%= lunch.title %>
@@ -32,9 +34,9 @@
                   </div>
                 </div>
               </div>
-              <div class="card-content">
+              <div class="card-content padding-right">
                   <div class="star-rating">
-                    <div class="star-rating-front" style="width%"><%= "評価:" %>★<%= lunch.score %><%= "点" %></div>
+                    <div class="star-rating-front" style="width%"><%= "評価:" %>★<%= lunch.score %></div>
                   </div>
               </div>
               

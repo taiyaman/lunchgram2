@@ -6,7 +6,7 @@ class Lunch < ApplicationRecord
     with_options presence: true do
         validates :title
         validates :body
-        validates :image
+        #validates :image
         validates :score
     end
     
